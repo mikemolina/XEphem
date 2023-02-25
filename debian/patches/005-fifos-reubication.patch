@@ -1,0 +1,18 @@
+Description: fifos reubication
+ Fix location of fifos in datadir.
+Origin: vendor, https://salsa.debian.org/debian-astro-team/xephem/-/blob/master/debian/patches/04_lx200xed-debian
+Author: Lukasz Sanocki <sanlu@pkim.org>
+Last-Update: 2021-09-28
+--- a/GUI/xephem/tools/lx200xed/lx200xed.c.ori	2023-02-18 21:23:50.481805908 -0500
++++ b/GUI/xephem/tools/lx200xed/lx200xed.c	2023-02-18 21:25:04.985691236 -0500
+@@ -24,8 +24,8 @@
+ 
+ #define _POSIX_SOURCE 1
+ 
+-#define GOTOFIFO_NAME   "/usr/local/xephem/fifos/xephem_loc_fifo"
+-#define MARKFIFO_NAME	"/usr/local/xephem/fifos/xephem_in_fifo"
++#define GOTOFIFO_NAME   "/usr/share/xephem/fifos/xephem_loc_fifo"
++#define MARKFIFO_NAME	"/usr/share/xephem/fifos/xephem_in_fifo"
+ 
+ #define	TEMPERATURE	10.		/* air temp, C */
+ #define	PRESSURE	1010.		/* air pressure, mB */

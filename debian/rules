@@ -1,0 +1,24 @@
+#!/usr/bin/make -f
+#export DH_VERBOSE = 1
+
+include /usr/share/dpkg/architecture.mk
+
+export DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+export DEBIAN_CFLAGS := $(shell dpkg-buildflags --get CFLAGS)
+export DEBIAN_LDFLAGS := $(shell dpkg-buildflags --get LDFLAGS)
+
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	$(MAKE) -C ./GUI/xephem
+
+override_dh_auto_install:
+	$(MAKE) -C ./GUI/xephem prefix=/usr DESTDIR=$(CURDIR)/debian/tmp install
+	install -m 755 -d $(CURDIR)/debian/tmp/etc
+	@echo "XEphem.ShareDir: /usr/share/xephem" > $(CURDIR)/debian/tmp/etc/XEphem
+
+override_dh_auto_clean:
+	$(MAKE) -C ./GUI/xephem clobber

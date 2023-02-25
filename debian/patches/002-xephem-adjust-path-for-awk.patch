@@ -1,0 +1,13 @@
+Description: adjust path for awk
+ Fix correct path for executable awk.
+Origin: vendor, https://build.opensuse.org/package/view_file/home:rjmathar/xephem/xephem-4.1.0.patch?expand=1
+Author: Richard J. Mathar <mathar@mpia.de>
+Last-Update: 2022-01-08
+--- a/GUI/xephem/tools/jost2edb.awk
++++ b/GUI/xephem/tools/jost2edb.awk
+@@ -1,4 +1,4 @@
+-#!/bin/awk -f
++#!/usr/bin/awk -f
+ # convert from Jost Jahn postings format to {x}ephem format
+ # we don't try to select out non-entries.
+ # v2 11/24/94

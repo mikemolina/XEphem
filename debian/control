@@ -1,0 +1,38 @@
+Source: xephem
+Section: science
+Priority: optional
+Maintainer: Miguel Molina <mmolina.unphysics@gmail.com>
+Build-Depends: debhelper (>= 10), libjpeg-turbo8-dev | libjpeg62-turbo-dev, libmotif-dev, libpng-dev, libssl-dev, libxext-dev, libxmu-dev, libxt-dev, zlib1g-dev, imagemagick
+Standards-Version: 4.1.4
+Homepage: https://xephem.github.io/XEphem/Site/xephem.html
+Vcs-Git: https://github.com/XEphem/XEphem.git
+Vcs-Browser: https://github.com/XEphem/XEphem
+
+Package: xephem
+Architecture: any
+Multi-Arch: foreign
+Depends: xephem-data (= ${source:Version}), ${shlibs:Depends}, ${misc:Depends}, curl
+Description: Scientific-grade interactive astronomical ephemeris software
+ XEphem is an interactive astronomy software for all UNIX platforms,
+ written and maintained by Elwood Downey over more than thirty years
+ 1990-2021 and now generously released under the MIT License.
+ .
+ XEphem can compute information on demand or time can be set to
+ increment automatically. In this way a series of computations and
+ movies can be generated.
+
+Package: xephem-data
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends}
+Description: XEphem data files
+ XEphem is an interactive astronomy software for all UNIX platforms,
+ written and maintained by Elwood Downey over more than thirty years
+ 1990-2021 and now generously released under the MIT License.
+ .
+ XEphem can compute information on demand or time can be set to
+ increment automatically. In this way a series of computations and
+ movies can be generated.
+ .
+ This package contains data-files which are used by xephem.
+

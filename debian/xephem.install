@@ -1,0 +1,7 @@
+usr/bin/xephem
+usr/share/man/*/xephem.*
+usr/share/applications
+usr/share/metainfo
+usr/share/icons
+debian/tmp/etc/XEphem etc
+

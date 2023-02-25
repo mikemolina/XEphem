@@ -1,0 +1,18 @@
+xephem (4.1.0+git0a1b505-1) unstable; urgency=medium
+
+  * Initial packaging for test purpose.
+  * Fixed spelling errors in binary file.
+  * Added support multiarch for package build in the Makefile upstream
+    in according to owned packaging guidelines of this distribution.
+  * Added manage for desktop files and metadata files.
+  * Bugs fixed from patches proposed by various authors. Credits for
+    Richard J. Mathar, Lukasz Sanocki, Mattia Verga and Florian Weimer.
+
+ -- Miguel Molina <mmolina.unphysics@gmail.com>  Sun, 12 Feb 2023 10:31:44 -0500
+
+xephem (4.1.0-1) unstable; urgency=medium
+
+  * Re-introduce xephem in debian/main (Closes: #995227)
+
+ -- Lukasz Sanocki <sanlu@pkim.org>  Wed, 15 Sep 2021 11:23:03 +0200
+

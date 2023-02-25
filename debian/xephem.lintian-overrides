@@ -1,0 +1,4 @@
+xephem: spelling-error-in-binary usr/bin/xephem Pres Press
+# Code in XEphem does reference "Pres" as abbreviation of word "pressure".
+# View with: grep -rwn Pres *
+

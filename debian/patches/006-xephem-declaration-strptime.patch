@@ -1,0 +1,20 @@
+Description: declaration strptime
+ The function isan X/Open extension that is not available by default in
+ the glibc headers.  Currently, this works because compilers support
+ implicit function declarations, but future versions are likely to
+ disable by them default, to improve type safety.
+Forwarded: https://github.com/XEphem/XEphem/pull/73/commits/661a08f21a826741a215491d1dd19b0592bb449a
+Author: Florian Weimer
+Last-Update: 2023-01-19
+--- a/GUI/xephem/sunmenu.c~	2023-02-17 23:10:19.000000000 -0500
++++ b/GUI/xephem/sunmenu.c	2023-02-18 21:36:37.419507352 -0500
+@@ -1,6 +1,9 @@
+ /* code to manage the sun display 
+  */
+ 
++/* For the declaration of strptime in <time.h>. */
++#define _GNU_SOURCE
++
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <errno.h>

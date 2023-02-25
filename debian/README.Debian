@@ -1,0 +1,9 @@
+xephem for Debian
+-----------------
+
+An architecture-independent package was built to optimize the package size and
+make it easier to distribute the binaries for different architectures.
+The xephem-data package contains aux, catalogs, fifos, fit, gallery, help, and
+lo directories.
+
+ -- Miguel Molina <mmolina.unphysics@gmail.com>  Sun, 12 Feb 2023 10:31:44 -0500

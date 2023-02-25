@@ -1,0 +1,73 @@
+Description: adjustment in manpage
+ Argument of TITLE LINE macro change to uppercase in manpage.
+ Adjustment in justifying and the line of brief description.
+ View more in https://man.freebsd.org/cgi/man.cgi?query=mdoc&sektion=7
+Origin: vendor, https://build.opensuse.org/package/view_file/home:rjmathar/xephem/xephem-4.1.0.patch?expand=1
+Author: Richard J. Mathar <mathar@mpia.de>
+Last-Update: 2022-01-08
+--- a/GUI/xephem/xephem.man
++++ b/GUI/xephem/xephem.man
+@@ -1,11 +1,11 @@
+-.TH XEphem 1X
+-.SH Name
+-XEphem \- an interactive astronomical ephemeris for X11
+-.SH Syntax
+-\fBxephem [-prfb] [-install {yes|no|guess}] [-resfile <resourcefile>] [-[no]splash]\fP
+-.SH Description
+-.na
++.TH XEPHEM 1 "2023 Feb 12"
++.if n .ad l
+ .nh
++.SH NAME
++xephem \- an interactive astronomical ephemeris for X11
++.SH SYNTAX
++\fBxephem [-prfb] [-install {yes|no|guess}] [-resfile <resourcefile>] [-[no]splash]\fP
++.SH DESCRIPTION
+ .PP
+ XEphem is an interactive astronomical ephemeris program for the X Window System.
+ It provides many graphical views as well as quantitative heliocentric,
+@@ -50,7 +50,7 @@
+ circumstances defined in the Main menu. Tools provide access to plotting,
+ searching, AAVSO and much more.
+ 
+-.SH Command line Options
++.SH COMMAND LINE OPTIONS
+ .B -prfb
+ displays all the built-in default resources, then exits. Some of them are
+ described here.
+@@ -77,7 +77,7 @@
+ slow system, or be the source of an annoying flash on a fast system. The setting
+ is persistent so it will remain until changed.
+ 
+-.SH Menu Tour
++.SH MENU TOUR
+ .B File
+ 
+ This menu controls access to the System log;
+@@ -123,7 +123,7 @@
+ context sensitive help;
+ references; version number and the Copyright statement.
+ 
+-.SH X Resources
++.SH X RESOURCES
+ When first started, XEphem looks for a file named
+ .B .xephemrc
+ in your $HOME directory. It should contain one line of the form:
+@@ -144,14 +144,14 @@
+ defined otherwise, the Shared directory is ".", that is, the current 
+ directory.
+ 
+-.SH Author
++.SH AUTHOR
+ .PP
+ Elwood C. Downey, email ecdowney@ClearSkyInstitute.com.
+ 
+-.SH References
++.SH REFERENCES
+ .PP
+ The Web homepage, including the FAQ, is maintained at
+-.I http://www.clearskyinstitute.com/xephem
++.I https://xephem.github.io/XEphem/Site/help/xephem.html
+ .PP
+ The online Help entry
+ .I on Credits

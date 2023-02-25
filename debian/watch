@@ -1,0 +1,13 @@
+# watch control file for uscan
+# See uscan(1) for format
+# See https://wiki.debian.org/debian/watch
+# To test it: uscan --no-download --verbose
+
+# Compulsory line, this is a version 4 file
+version=4
+
+# GitHub hosted projects
+opts="filenamemangle=s%(?:.*?)?v?(\d[\d.]*)\.tar\.gz%<project>-$1.tar.gz%" \
+   https://github.com/XEphem/XEphem/tags \
+   (?:.*?/)?v?(\d[\d.]*)\.tar\.gz debian uupdate
+

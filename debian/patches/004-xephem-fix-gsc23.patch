@@ -1,0 +1,18 @@
+Description: fix gsc23
+ Fix gsc 2.3 network catalog.
+Origin: vendor, https://salsa.debian.org/debian-astro-team/xephem/-/blob/master/debian/patches/03_gsc23_fix.patch
+Author: Lukasz Sanocki <sanlu@pkim.org>
+Last-Update: 2021-09-28
+--- a/GUI/xephem/gscnet.c.ori	2023-02-18 21:00:54.668521903 -0500
++++ b/GUI/xephem/gscnet.c	2023-02-18 21:03:56.476563344 -0500
+@@ -29,8 +29,8 @@
+ {
+ #define	GSC23MAXFOV	degrad(30./60.0)		/* max fov */
+ 	/* http://gsss.stsci.edu/webservices/vo/ConeSearch.aspx?RA=10.0&DEC=5.0&SR=0.2&FORMAT=CSV */
+-	static char ifmt[] = "%[^,],%lf,%lf,%*[^,],%*[^,],%*[^,],%*[^,],%lf,%lf,%*[^,],%*[^,],%lf,%lf,%lf,%*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%d";
+-	static char gfmt[] = " GET http://%s%s?RA=%g&DEC=%g&SR=%g&FORMAT=CSV HTTP/1.0\r\nUser-Agent: xephem/%s\r\n\r\n";
++	static char ifmt[] = "%[^,],%*[^,],%*[^,],%*[^,],%lf,%lf,%*[^,],%*[^,],%*[^,], %*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%lf,%*[^,],%*[^,],%lf,%*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%lf,%*[^,],%*[^,],%lf,%*[^,],%*[^,],%lf,%*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%d";
++	static char gfmt[] = "GET http://%s%s?RA=%g&DEC=%g&SR=%g&FORMAT=CSV&CAT=GSC23 HTTP/1.0\r\nUser-Agent: xephem/%s\r\n\r\n";	
+ 	char host[1024];
+ 	char buf[2048];
+ 	char *hp1;
