@@ -1,0 +1,32 @@
+Description: safe for parallel builds and makefile improvements
+ To allow parallel builds and improvement in build system.
+ This patch confirms the fix to the already reported issue.
+Origin: vendor, https://github.com/XEphem/XEphem/issues/67#issue-1486855422
+Bug-Gentoo: https://bugs.gentoo.org/881813
+Author: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/GUI/xephem/Makefile	2023-02-18 23:02:16.981635909 -0500
++++ b/GUI/xephem/Makefile	2023-02-19 18:13:33.792612867 -0500
+@@ -198,18 +198,18 @@
+ 	xephem.o	\
+ 	xmisc.o
+ 
+-all: libs xephem xephem.1
++all: xephem xephem.1
+ 
+-xephem: $(INCS) $(OBJS)
++xephem: libs $(INCS) $(OBJS)
+ 	$(CC) $(LDFLAGS) -o $@ $(OBJS) $(LIBS)
+ 
+ xephem.1: xephem.man
+ 	cp $? $@
+ 
+ libs:
+-	cd ../../libastro; make
+-	cd ../../libip; make
+-	cd ../../liblilxml; make
++	$(MAKE) -C ../../libastro
++	$(MAKE) -C ../../libip
++	$(MAKE) -C ../../liblilxml
+ 
+ clean:
+ 	rm -fr *.o ../../lib*/*.[ao]

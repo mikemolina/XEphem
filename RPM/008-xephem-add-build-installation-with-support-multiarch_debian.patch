@@ -1,0 +1,126 @@
+Description: add build and installation with support multiarch
+ Compilation with support multiarch and installation XEphem for multiple users.
+ .
+ Upstream do not manifest routine for installation of the program.
+Forwarded: not-needed
+Author: Miguel Molina <mmolina.unphysics@gmail.com>
+Last-Update: 2023-02-11
+--- a/GUI/xephem/Makefile
++++ b/GUI/xephem/Makefile
+@@ -9,9 +9,9 @@
+ # one executable, xephem.
+ 
+ # These -I and -L flags point to the supporting XEphem libraries
+-LIBINC = -I../../libastro -I../../libip -I../../liblilxml -I../../libjpegd -I../../libpng -I../../libz
+-LIBLNK = -L../../libastro -L../../libip -L../../liblilxml -L../../libjpegd -L../../libpng -L../../libz
+-LIBLIB = -lastro -lip -llilxml -ljpegd -lpng -lz
++LIBINC = -I../../libastro -I../../libip -I../../liblilxml -I/usr/include
++LIBLNK = -L../../libastro -L../../libip -L../../liblilxml -L/usr/lib/$(DEB_HOST_MULTIARCH)
++LIBLIB = -lastro -lip -llilxml -ljpeg -lpng -lz
+ 
+ # MOTIFI is the directory containing the Xm directory of include files.
+ # MOTIFL is the directory containing the libXm.a library.
+@@ -25,7 +25,7 @@
+ MOTIFI = /usr/include
+ endif
+ ifndef MOTIFL
+-MOTIFL = /usr/lib
++MOTIFL = /usr/lib/$(DEB_HOST_MULTIARCH)
+ endif
+ 
+ # For Linux and Apple OS X
+@@ -37,12 +37,18 @@
+ endif
+ 
+ CC = gcc
+-CLDFLAGS = -g
+-CFLAGS = $(LIBINC) $(CLDFLAGS) -O2 -Wall -I$(MOTIFI) $(PLATI)
+-LDFLAGS = $(LIBLNK) $(CLDFLAGS) -L$(MOTIFL) $(PLATL)
++CFLAGS = $(DEBIAN_CFLAGS) $(LIBINC) -I$(MOTIFI) $(PLATI)
++LDFLAGS = $(DEBIAN_LDFLAGS) $(LIBLNK) -L$(MOTIFL) $(PLATL)
+ XLIBS = -lXm -lXt -lXext -lXmu -lX11
+ LIBS = $(XLIBS) $(LIBLIB) -lm -lssl
+ 
++# Variables installation for Linux
++prefix := /usr/local
++bindir = $(prefix)/bin
++datadir = $(prefix)/share
++mandir = $(datadir)/man
++export datadir
++
+ # static linking on Apple using X11 libs from ports
+ # CC = gcc
+ # OLI = /opt/local/include
+@@ -198,18 +204,35 @@
+ 	$(CC) $(LDFLAGS) -o $@ $(OBJS) $(LIBS)
+ 
+ xephem.1: xephem.man
+-	nroff -man $? > $@
++	cp $? $@
+ 
+ libs:
+ 	cd ../../libastro; make
+ 	cd ../../libip; make
+-	cd ../../libjpegd; make
+ 	cd ../../liblilxml; make
+-	cd ../../libpng; make
+-	cd ../../libz; make
+ 
+ clean:
+ 	rm -fr *.o ../../lib*/*.[ao]
+ 
+ clobber: clean
+ 	rm -fr xephem xephem.1
++
++# Installation
++install: install-binary install-man install-data install-desktopfiles
++
++install-binary:
++	install -Dm 755 xephem -t $(DESTDIR)$(bindir)
++
++install-man:
++	install -Dm 644 xephem.1 -t $(DESTDIR)$(mandir)/man1
++
++install-data:
++	install -dm 755 $(DESTDIR)$(datadir)/xephem
++	@for d in auxil catalogs fifos fits gallery help lo; do \
++	  echo "cp -R $$d $(DESTDIR)$(datadir)/xephem"; \
++	  cp -R $$d $(DESTDIR)$(datadir)/xephem; \
++	done
++
++install-desktopfiles:
++	$(MAKE) -C ../../desktopfiles DESTDIR=$(DESTDIR) install
++
+--- a/libastro/Makefile
++++ b/libastro/Makefile
+@@ -5,7 +5,7 @@
+ 
+ # gcc
+ CC = gcc
+-CFLAGS= -O2 -Wall
++CFLAGS= $(DEBIAN_CFLAGS)
+ 
+ # macosx universal binary
+ # CFLAGS= -O2 -Wall -arch i386 -arch ppc
+--- a/libip/Makefile
++++ b/libip/Makefile
+@@ -3,7 +3,7 @@
+ 
+ # gcc
+ CC = gcc
+-CFLAGS= -I../libastro -O2 -Wall
++CFLAGS= $(DEBIAN_CFLAGS) -I../libastro
+ 
+ # macosx universal binary
+ # CFLAGS= -I../libastro -O2 -Wall -arch i386 -arch ppc
+--- a/liblilxml/Makefile
++++ b/liblilxml/Makefile
+@@ -5,7 +5,7 @@
+ 
+ # gcc
+ CC = gcc
+-CFLAGS= -O2 -Wall
++CFLAGS= $(DEBIAN_CFLAGS)
+ 
+ # macosx universal binary
+ # CFLAGS= -O2 -Wall -arch i386 -arch ppc

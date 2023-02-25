@@ -1,0 +1,58 @@
+Description: fix spelling error in binary
+ Error fixed in write of the code.
+Forwarded: not-needed
+Author: Miguel Molina <mmolina.unphysics@gmail.com>
+Last-Update: 2023-02-12
+--- a/GUI/xephem/imregmenu.c
++++ b/GUI/xephem/imregmenu.c
+@@ -229,7 +229,7 @@
+ 	s2_w = XmCreateToggleButton (irshell_w, "S1TB", args, n);
+ 	XtAddCallback (s2_w, XmNvalueChangedCallback, reg_cb, NULL);
+ 	set_xmstring (s2_w, XmNlabelString,
+-		    "Image to be registed is loaded, now click same 2 stars");
++		    "Image to be registered is loaded, now click same 2 stars");
+ 	XtManageChild (s2_w);
+ 
+ 	/* labels for second set of reference stars */
+--- a/GUI/xephem/datamenu.c
++++ b/GUI/xephem/datamenu.c
+@@ -109,7 +109,7 @@
+     {MISC_COL,	"SnLght",  "Light travel time from Sun"},
+     {MISC_COL,	"Uranom",  "Volume and page number in Uranometria"},
+     {MISC_COL,	"Uran2k",  "Volume and page number in Uranometria 2000"},
+-    {MISC_COL,	"MillSA",  "Volume and page number in Millenium Star Atlas"},
++    {MISC_COL,	"MillSA",  "Volume and page number in Millennium Star Atlas"},
+ 
+     {RISET_COL,	"RisTm",   "Rise time, today"},
+     {RISET_COL,	"RisAz",   "Rise azimuth, today"},
+--- a/GUI/xephem/skylist.c
++++ b/GUI/xephem/skylist.c
+@@ -98,7 +98,7 @@
+     char *desc;			/* description */
+     char ura[ATLASLEN];		/* Uranometria page number */
+     char u2k[ATLASLEN];		/* Uranometria 200 page number */
+-    char msa[ATLASLEN];		/* Millenium Star Atlas page number */
++    char msa[ATLASLEN];		/* Millennium Star Atlas page number */
+ } ObjInfo;
+ 
+ /* handy "no rise/set" test */
+@@ -139,7 +139,7 @@
+ 
+     {"Urano",  "Uranometria",      sort_ura},
+     {"Uran2k", "Uranom 2000",      sort_u2k},
+-    {"MillSA", "Millenium",        sort_msa},
++    {"MillSA", "Millennium",       sort_msa},
+     {"RisTm",  "Rise time",        sort_risetm},
+     {"RisAz",  "Rise azimuth",     sort_riseaz},
+     {"TrnTm",  "Transit time",     sort_trantm},
+--- a/GUI/xephem/help/xephem.html
++++ b/GUI/xephem/help/xephem.html
+@@ -1753,7 +1753,7 @@
+ </ul>
+ <ul>
+   <li><span style="font-weight: bold;">MillSA</span> Volume and Page
+-number of object's location in the Millenium Star Atlas, published
++number of object's location in the Millennium Star Atlas, published
+ by Sky Publishing Corp.</li>
+ </ul>
+ Section two controls information related to rising, transitting, and
