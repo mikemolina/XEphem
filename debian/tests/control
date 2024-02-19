@@ -1,0 +1,4 @@
+Tests: xephem-bin
+Depends: xephem-bin
+Restrictions: allow-stderr
+

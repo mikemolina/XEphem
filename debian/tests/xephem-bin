@@ -1,0 +1,5 @@
+#! /bin/sh
+set -e
+
+xephem -help 1>&2 2>/dev/null
+echo "run: OK"

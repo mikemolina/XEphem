@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2023 Miguel Molina <mmolina.unphysics@gmail.com> -->
+<!-- Copyright 2023-2024 Miguel Molina <mmolina.unphysics@gmail.com> -->
 <component type="desktop-application">
-  <id>xephem.desktop</id>
+  <id>io.github.xephem.desktop</id>
   <name>XEphem</name>
   <name xml:lang="es">XEphem</name>
   <summary>Interactive astronomical ephemeris software</summary>
@@ -36,18 +36,18 @@
   <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/XEphem/XEphem/main/GUI/xephem/help/png/sky-view.png</image>
-      <caption>Highly configurable interactive Sky View.</caption>
-      <caption xml:lang="es">Vista del cielo interactivo altamente configurable.</caption>
+      <caption>Highly configurable interactive Sky View</caption>
+      <caption xml:lang="es">Vista del cielo interactivo altamente configurable</caption>
     </screenshot>
     <screenshot>
       <image>https://raw.githubusercontent.com/XEphem/XEphem/main/GUI/xephem/help/png/solsys.png</image>
-      <caption>3D projection and true stereo views of the solar system, perfect for visualizing comet paths.</caption>
-      <caption xml:lang="es">Proyecciones 3D y vistas estereográficas reales del sistema solar, perfectas para visualizar trayectorias de cometas.</caption>
+      <caption>3D projection and true stereo views of the solar system, perfect for visualizing comet paths</caption>
+      <caption xml:lang="es">Proyecciones 3D y vistas estereográficas reales del sistema solar, perfectas para visualizar trayectorias de cometas</caption>
     </screenshot>
     <screenshot>
       <image>https://raw.githubusercontent.com/XEphem/XEphem/main/GUI/xephem/help/png/sun-view.png</image>
-      <caption>Near real-time Solar images from the SOHO spacecraft.</caption>
-      <caption xml:lang="es">Imágenes solares en tiempo real desed la nave espacial SOHO.</caption>
+      <caption>Near real-time Solar images from the SOHO spacecraft</caption>
+      <caption xml:lang="es">Imágenes solares en tiempo real desde la nave espacial SOHO</caption>
     </screenshot>
   </screenshots>
 </component>

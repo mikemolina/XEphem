@@ -1,3 +1,18 @@
+xephem (4.2.0+git30e14f6-1) unstable; urgency=medium
+
+  * New upstream version 4.2.0
+  * Upstream fixed bug in declaration strptime (commit 30e14f6).
+  * Packaging update.
+  * The name of desktop and metainfo files changed in according
+    to specifications of Freedesktop.org for to be unique across
+    all distributions.
+  * Fixed spelling errors in metainfo file.
+  * Improvements in the metainfo file for your validation via
+    command appstream-util validate-strict.
+  * Include autopkgtest.
+
+ -- Miguel Molina <mmolina.unphysics@gmail.com>  Sat, 17 Feb 2024 20:28:31 -0500
+
 xephem (4.1.0+git0a1b505-1) unstable; urgency=medium
 
   * Initial packaging for test purpose.
