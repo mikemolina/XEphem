@@ -15,7 +15,7 @@ Last-Update: 2023-02-11
 -LIBLNK = -L../../libastro -L../../libip -L../../liblilxml -L../../libjpegd -L../../libpng -L../../libz
 -LIBLIB = -lastro -lip -llilxml -ljpegd -lpng -lz
 +LIBINC = -I../../libastro -I../../libip -I../../liblilxml -I/usr/include
-+LIBLNK = -L../../libastro -L../../libip -L../../liblilxml -L/usr/lib/$(DEB_HOST_MULTIARCH)
++LIBLNK = -L../../libastro -L../../libip -L../../liblilxml -L$(RPM_HOST_MULTIARCH)
 +LIBLIB = -lastro -lip -llilxml -ljpeg -lpng -lz
  
  # MOTIFI is the directory containing the Xm directory of include files.
@@ -25,7 +25,7 @@ Last-Update: 2023-02-11
  endif
  ifndef MOTIFL
 -MOTIFL = /usr/lib
-+MOTIFL = /usr/lib/$(DEB_HOST_MULTIARCH)
++MOTIFL = $(RPM_HOST_MULTIARCH)
  endif
  
  # For Linux and Apple OS X
@@ -36,8 +36,8 @@ Last-Update: 2023-02-11
 -CLDFLAGS = -g
 -CFLAGS = $(LIBINC) $(CLDFLAGS) -O2 -Wall -I$(MOTIFI) $(PLATI)
 -LDFLAGS = $(LIBLNK) $(CLDFLAGS) -L$(MOTIFL) $(PLATL)
-+CFLAGS = $(DEBIAN_CFLAGS) $(LIBINC) -I$(MOTIFI) $(PLATI)
-+LDFLAGS = $(DEBIAN_LDFLAGS) $(LIBLNK) -L$(MOTIFL) $(PLATL)
++CFLAGS = $(RPM_CFLAGS) $(LIBINC) -I$(MOTIFI) $(PLATI)
++LDFLAGS = $(RPM_LDFLAGS) $(LIBLNK) -L$(MOTIFL) $(PLATL)
  XLIBS = -lXm -lXt -lXext -lXmu -lX11
  LIBS = $(XLIBS) $(LIBLIB) -lm -lssl
  
@@ -98,7 +98,7 @@ Last-Update: 2023-02-11
  # gcc
  CC = gcc
 -CFLAGS= -O2 -Wall
-+CFLAGS= $(DEBIAN_CFLAGS)
++CFLAGS= $(RPM_CFLAGS)
  
  # macosx universal binary
  # CFLAGS= -O2 -Wall -arch i386 -arch ppc
@@ -109,7 +109,7 @@ Last-Update: 2023-02-11
  # gcc
  CC = gcc
 -CFLAGS= -I../libastro -O2 -Wall
-+CFLAGS= $(DEBIAN_CFLAGS) -I../libastro
++CFLAGS= $(RPM_CFLAGS) -I../libastro
  
  # macosx universal binary
  # CFLAGS= -I../libastro -O2 -Wall -arch i386 -arch ppc
@@ -120,7 +120,7 @@ Last-Update: 2023-02-11
  # gcc
  CC = gcc
 -CFLAGS= -O2 -Wall
-+CFLAGS= $(DEBIAN_CFLAGS)
++CFLAGS= $(RPM_CFLAGS)
  
  # macosx universal binary
  # CFLAGS= -O2 -Wall -arch i386 -arch ppc

@@ -1,10 +1,10 @@
-%global git_commit 0a1b50503bdf202fb6fa7ca62124b0242a004e69
+%global git_commit 30e14f685ede015fcd8985cd83ee6510f93f0073
 %global commit_short_form %(c=%{git_commit}; echo ${c:0:7})
 %define _applicationsdir %{_datadir}/applications
 %define _iconsdir %{_datadir}/icons/hicolor
 
 Name:		xephem
-Version:	4.1.0+git%{commit_short_form}
+Version:	4.2.0+git%{commit_short_form}
 Release:	1%{?dist}
 Summary:	Scientific-grade interactive astronomical ephemeris software
 
@@ -16,16 +16,17 @@ URL:		https://github.com/XEphem/XEphem
 Source0:	%{name}-%{version}.tar.xz
 Source1:	xephem-get-orig-source.sh
 Source2:	version.sh
+Source3:	io.github.xephem.desktop
+Source4:	io.github.xephem.metainfo.xml
 Patch1:		001-xephem-adjustment-in-manpage.patch
 Patch2:		002-xephem-adjust-path-for-awk.patch
 Patch3:		003-xephem-fix-spelling-error-in-binary.patch
 Patch4:		004-xephem-fix-gsc23.patch
 Patch5:		005-fifos-reubication.patch
-Patch6:		006-xephem-declaration-strptime.patch
-Patch7:		007-xephem-manage-desktopfiles.patch
-Patch8:		008-xephem-add-build-installation-with-support-multiarch_rpm.patch
-Patch9:		009-xephem-safe-build-parallel.patch
-Patch10:	010-xephem-update-address-lgpl2.1.patch
+Patch6:		007-xephem-manage-desktopfiles.patch
+Patch7:		008-xephem-add-build-installation-with-support-multiarch_rpm.patch
+Patch8:		009-xephem-safe-build-parallel.patch
+Patch9:		010-xephem-update-address-lgpl2.1.patch
 
 BuildRequires:	make
 BuildRequires:	gcc
@@ -46,7 +47,7 @@ Requires:	curl
 %description
 XEphem is an interactive astronomy program for all UNIX platforms,
 written and maintained by Elwood Downey over more than thirty years
-1990–2021 and now generously released under the MIT License.
+1990–2024 and now generously released under the MIT License.
 
 XEphem can compute information on demand or time can be set to
 increment automatically. In this way a series of computations and
@@ -62,16 +63,15 @@ This package contains data-files which are used by xephem.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
+%patch 1 -p1
+%patch 2 -p1
+%patch 3 -p1
+%patch 4 -p1
+%patch 5 -p1
+%patch 6 -p1
+%patch 7 -p1
+%patch 8 -p1
+%patch 9 -p1
 
 %build
 %make_build -C GUI/xephem RPM_HOST_MULTIARCH="%{_libdir}" RPM_CFLAGS="%{build_cflags}" RPM_LDFLAGS="%{build_ldflags}"
@@ -91,16 +91,16 @@ XEphem.ShareDir: %{_datadir}/%{name}
 EOF
 
 %check
-desktop-file-validate %{buildroot}%{_applicationsdir}/%{name}.desktop
-appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/%{name}.metainfo.xml
+desktop-file-validate %{buildroot}%{_applicationsdir}/io.github.xephem.desktop
+appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/io.github.xephem.metainfo.xml
 
 %files
 %license LICENSE_%{name} LICENSE_liblilxml
 %doc README.md
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1*
-%{_applicationsdir}/%{name}.desktop
-%{_metainfodir}/%{name}.metainfo.xml
+%{_applicationsdir}/io.github.xephem.desktop
+%{_metainfodir}/io.github.xephem.metainfo.xml
 %{_iconsdir}/*/apps/%{name}.png
 %config(noreplace) %{_sysconfdir}/XEphem
 
@@ -108,6 +108,16 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/%{name}.metain
 %{_datadir}/%{name}
 
 %changelog
+* Sun Feb 18 2024 Miguel Molina <mmolina.unphysics@gmail.com> - 4.2.0+git30e14f6-1%{?dist}
+- New upstream version 4.2.0
+- Upstream fixed bug in declaration strptime (commit 30e14f6).
+- Packaging update.
+- The name of desktop and metainfo files changed in according
+  to specifications of Freedesktop.org for to be unique across
+  all distributions.
+- Fixed spelling errors in metainfo file.
+- Improvements in the metainfo file for your validation via
+  command appstream-util validate-strict.
 * Sat Feb 18 2023 Miguel Molina <mmolina.unphysics@gmail.com> - 4.1.0+git0a1b505-1%{?dist}
 - Initial packaging for test purpose.
 - Fixed spelling errors in binary file.

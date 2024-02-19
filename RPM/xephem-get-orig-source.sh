@@ -3,14 +3,18 @@
 # xephem-get-orig-source.sh - Script para generar tarball fuente de xephem desde el upstream
 
 XEPHEM_GIT_URL="https://github.com/XEphem/XEphem.git"
-XEPHEM_GIT_COMMIT="0a1b50503bdf202fb6fa7ca62124b0242a004e69"
+XEPHEM_GIT_COMMIT="30e14f685ede015fcd8985cd83ee6510f93f0073"
 COMMIT_SHORT_FORM="$(echo $XEPHEM_GIT_COMMIT | sed -e 's/^\([[:xdigit:]]\{,7\}\).*/\1/')"
 date=`date '+%Y%m%d'`
 
 # Clonar repositorio
 if ! [ -d "xephem" ]
 then
-    git clone "$XEPHEM_GIT_URL" "xephem-git${COMMIT_SHORT_FORM}"
+    git clone "$XEPHEM_GIT_URL" "xephem"
+else
+    cd xephem
+    git pull
+    cd ..
 fi
 cp -R "xephem" "xephem-git${COMMIT_SHORT_FORM}"
 cd "xephem-git${COMMIT_SHORT_FORM}"

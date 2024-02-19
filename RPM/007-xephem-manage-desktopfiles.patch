@@ -1,11 +1,15 @@
 Description: manage desktopfiles
  Since XEphem contains a GUI application this patch achieve
  the installation de icons and desktop file of the application.
+ The name of desktop and metainfo files changed in according
+ to specifications of Freedesktop.org for to be unique across
+ all distributions.
+ View https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-id-generic
 Author: Miguel Molina <mmolina.unphysics@gmail.com>
 Forwarded: not-needed
-Last-Update: 2023-02-13
+Last-Update: 2024-02-17
 --- /dev/null
-+++ b/desktopfiles/xephem.desktop
++++ b/desktopfiles/io.github.xephem.desktop
 @@ -0,0 +1,13 @@
 +[Desktop Entry]
 +Version=1.0
@@ -33,8 +37,8 @@ Last-Update: 2023-02-13
 +	48x48/apps/xephem.png \
 +	64x64/apps/xephem.png \
 +	128x128/apps/xephem.png
-+DESKTOPFILE = xephem.desktop
-+METAINFOFILE = xephem.metainfo.xml
++DESKTOPFILE = io.github.xephem.desktop
++METAINFOFILE = io.github.xephem.metainfo.xml
 +
 +iconsdir = $(DESTDIR)$(datadir)/icons/hicolor
 +applicationsdir = $(DESTDIR)$(datadir)/applications
@@ -61,12 +65,12 @@ Last-Update: 2023-02-13
 +install-metainfo:
 +	install -Dm 644 $(METAINFOFILE) -t $(metainfodir)
 --- /dev/null
-+++ b/desktopfiles/xephem.metainfo.xml
++++ b/desktopfiles/io.github.xephem.metainfo.xml
 @@ -0,0 +1,53 @@
 +<?xml version="1.0" encoding="UTF-8"?>
-+<!-- Copyright 2023 Miguel Molina <mmolina.unphysics@gmail.com> -->
++<!-- Copyright 2023-2024 Miguel Molina <mmolina.unphysics@gmail.com> -->
 +<component type="desktop-application">
-+  <id>xephem.desktop</id>
++  <id>io.github.xephem.desktop</id>
 +  <name>XEphem</name>
 +  <name xml:lang="es">XEphem</name>
 +  <summary>Interactive astronomical ephemeris software</summary>
@@ -101,18 +105,18 @@ Last-Update: 2023-02-13
 +  <screenshots>
 +    <screenshot type="default">
 +      <image>https://raw.githubusercontent.com/XEphem/XEphem/main/GUI/xephem/help/png/sky-view.png</image>
-+      <caption>Highly configurable interactive Sky View.</caption>
-+      <caption xml:lang="es">Vista del cielo interactivo altamente configurable.</caption>
++      <caption>Highly configurable interactive Sky View</caption>
++      <caption xml:lang="es">Vista del cielo interactivo altamente configurable</caption>
 +    </screenshot>
 +    <screenshot>
 +      <image>https://raw.githubusercontent.com/XEphem/XEphem/main/GUI/xephem/help/png/solsys.png</image>
-+      <caption>3D projection and true stereo views of the solar system, perfect for visualizing comet paths.</caption>
-+      <caption xml:lang="es">Proyecciones 3D y vistas estereográficas reales del sistema solar, perfectas para visualizar trayectorias de cometas.</caption>
++      <caption>3D projection and true stereo views of the solar system, perfect for visualizing comet paths</caption>
++      <caption xml:lang="es">Proyecciones 3D y vistas estereográficas reales del sistema solar, perfectas para visualizar trayectorias de cometas</caption>
 +    </screenshot>
 +    <screenshot>
 +      <image>https://raw.githubusercontent.com/XEphem/XEphem/main/GUI/xephem/help/png/sun-view.png</image>
-+      <caption>Near real-time Solar images from the SOHO spacecraft.</caption>
-+      <caption xml:lang="es">Imágenes solares en tiempo real desed la nave espacial SOHO.</caption>
++      <caption>Near real-time Solar images from the SOHO spacecraft</caption>
++      <caption xml:lang="es">Imágenes solares en tiempo real desde la nave espacial SOHO</caption>
 +    </screenshot>
 +  </screenshots>
 +</component>
