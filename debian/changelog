@@ -1,3 +1,12 @@
+xephem (4.2.0+git534a5cd-1) unstable; urgency=medium
+
+  * Upstream version 4.2.0
+  * Upstream fixed a couple of spelling errors in binary (PR #87).
+  * Packaging update.
+  * Update date and version in the metainfo file.
+
+ -- Miguel Molina <mmolina.unphysics@gmail.com>  Tue, 20 Feb 2024 22:03:30 -0500
+
 xephem (4.2.0+git30e14f6-1) unstable; urgency=medium
 
   * New upstream version 4.2.0

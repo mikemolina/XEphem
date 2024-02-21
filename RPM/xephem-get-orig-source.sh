@@ -3,7 +3,7 @@
 # xephem-get-orig-source.sh - Script para generar tarball fuente de xephem desde el upstream
 
 XEPHEM_GIT_URL="https://github.com/XEphem/XEphem.git"
-XEPHEM_GIT_COMMIT="30e14f685ede015fcd8985cd83ee6510f93f0073"
+XEPHEM_GIT_COMMIT="534a5cd7dddc4c71127e3938ee6a7f4e70a11878"
 COMMIT_SHORT_FORM="$(echo $XEPHEM_GIT_COMMIT | sed -e 's/^\([[:xdigit:]]\{,7\}\).*/\1/')"
 date=`date '+%Y%m%d'`
 

@@ -1,6 +1,5 @@
 001-xephem-adjustment-in-manpage.patch
 002-xephem-adjust-path-for-awk.patch
-003-xephem-fix-spelling-error-in-binary.patch
 004-xephem-fix-gsc23.patch
 005-fifos-reubication.patch
 007-xephem-manage-desktopfiles.patch
