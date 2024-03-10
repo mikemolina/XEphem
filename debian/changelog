@@ -1,3 +1,13 @@
+xephem (4.2.0+git20240304+6afc692-1) unstable; urgency=medium
+
+  * Upstream version 4.2.0
+  * Upstream fixed manpage (PR #90).
+  * Packaging update.
+  * Improvement in manpage. Credits for Richard J. Mathar, sanlupkim.
+  * Rename version from last commit date.
+
+ -- Miguel Molina <mmolina.unphysics@gmail.com>  Fri, 08 Mar 2024 22:29:22 -0500
+
 xephem (4.2.0+git534a5cd-1) unstable; urgency=medium
 
   * Upstream version 4.2.0

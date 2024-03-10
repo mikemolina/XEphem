@@ -1,10 +1,11 @@
-%global git_commit 534a5cd7dddc4c71127e3938ee6a7f4e70a11878
+%global git_commit 6afc692a80717b349b60b34cf93eaf06604eab0f
 %global commit_short_form %(c=%{git_commit}; echo ${c:0:7})
+%global date 20240304
 %define _applicationsdir %{_datadir}/applications
 %define _iconsdir %{_datadir}/icons/hicolor
 
 Name:		xephem
-Version:	4.2.0+git%{commit_short_form}
+Version:	4.2.0+git%{date}+%{commit_short_form}
 Release:	1%{?dist}
 Summary:	Scientific-grade interactive astronomical ephemeris software
 
@@ -106,6 +107,12 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/io.github.xeph
 %{_datadir}/%{name}
 
 %changelog
+* Sat Mar 09 2024 Miguel Molina <mmolina.unphysics@gmail.com> - 4.2.0+git20240304+6afc692-1%{?dist}
+- Upstream version 4.2.0
+- Upstream fixed manpage (PR #90).
+- Packaging update.
+- Improvement in manpage. Credits for Richard J. Mathar, sanlupkim.
+- Rename version from last commit date.
 * Tue Feb 20 2024 Miguel Molina <mmolina.unphysics@gmail.com> - 4.2.0+git534a5cd-1%{?dist}
 - Upstream version 4.2.0
 - Upstream fixed a couple of spelling errors in binary (PR #87).
